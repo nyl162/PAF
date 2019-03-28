@@ -58,12 +58,13 @@ app.get('/rsvps',(req,res)=>{
 });
 
 app.post('/rsvp',bP.urlencoded({ extended: false }),(req,res)=>{
-    console.log(req.body);
+    console.log([...Object.keys(req.body),...Object.values(req.body)]);
     let insVal = [
         req.body.first_name,
         req.body.last_name,
         req.body.attending
     ]
+    //let insVal=[...Object.keys(req.body),...Object.values(req.body)]
     //console.log(insVal);
     //res.json({result:insVal});
     AddRSVP(insVal).then((results)=>{
